@@ -1,88 +1,31 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Heart Shaped Buttons</title>
-    <style>
-      
-
-
-        .heart-icon.green {
-            fill: red;
-        }
-
-        .heart-icon.black {
-        fill: black;
-        }
-    </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Time Converter</title>
 </head>
 <body>
-    <table>
-        <tr>
-            <td>
-                <a class="heart-btn" onclick="handleButtonClick(1)" id="heartBtnContainer1">
-                    <svg class="heart-icon" xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512">
-                        <path d="M225.8 468.2l-2.5-2.3L48.1 303.2C17.4 274.7 0 234.7 0 192.8v-3.3c0-70.4 50-130.8 119.2-144C158.6 37.9 198.9 47 231 69.6c9 6.4 17.4 13.8 25 22.3c4.2-4.8 8.7-9.2 13.5-13.3c3.7-3.2 7.5-6.2 11.5-9c0 0 0 0 0 0C313.1 47 353.4 37.9 392.8 45.4C462 58.6 512 119.1 512 189.5v3.3c0 41.9-17.4 81.9-48.1 110.4L288.7 465.9l-2.5 2.3c-8.2 7.6-19 11.9-30.2 11.9s-22-4.2-30.2-11.9z"/>
-                    </svg>
-                </a>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <a class="heart-btn" onclick="handleButtonClick(2)" id="heartBtnContainer2">
-                    <svg class="heart-icon" xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512">
-                        <path d="M47.6 300.4L228.3 469.1c7.5 7 17.4 10.9 27.7 10.9s20.2-3.9 27.7-10.9L464.4 300.4c30.4-28.3 47.6-68 47.6-109.5v-5.8c0-69.9-50.5-129.5-119.4-141C347 36.5 300.6 51.4 268 84L256 96 244 84c-32.6-32.6-79-47.5-124.6-39.9C50.5 55.6 0 115.2 0 185.1v5.8c0 41.5 17.2 81.2 47.6 109.5z"/>
-                    </svg>
-                </a>
-            </td>
-        </tr>
-        <!-- Add more buttons as needed -->
-    </table>
-
     <script>
-        function handleButtonClick(index) {
-            // Retrieve existing data from local storage (if any)
-            let existingData = JSON.parse(localStorage.getItem('clickedIndexes')) || [];
+function convertTimeToISO(time) {
+    const [start, end] = time.split(' - ');
+    let originalDate = "2023-10-18";
+let formattedDate = originalDate.replace(/-/g, '');
+console.log(formattedDate); // Output: "20231018"
 
-            // Check if the index is already in the array
-            const indexExists = existingData.indexOf(index) !== -1;
+    const isoStartDate = `${formattedDate}T${start.replace(':', '')}00`;
+    const isoEndDate = `${formattedDate}T${end.replace(':', '')}00`;
 
-            if (indexExists) {
-                // Remove the index from the array
-                existingData = existingData.filter(item => item !== index);
-            } else {
-                // Add the index to the array
-                existingData.push(index);
-            }
+    return `${isoStartDate}/${isoEndDate}`;
+}
 
-            // Save the updated array back to local storage
-            localStorage.setItem('clickedIndexes', JSON.stringify(existingData));
+const time = '12:00 - 14:01';
+const isoTime = convertTimeToISO(time);
 
-            // Update button style
-            const button = document.getElementById(`heartBtnContainer${index}`);
-            if (indexExists) {
-                button.classList.remove('highlighted');
-                button.querySelector('.heart-icon').classList.remove('green');
-                button.querySelector('.heart-icon').classList.add('black');
-            } else {
-                button.classList.add('highlighted');
-                button.querySelector('.heart-icon').classList.remove('black');
-                button.querySelector('.heart-icon').classList.add('green');
-            }
+console.log(isoTime); // Output: '20231018T120000/20231018T140100'
 
-            }
 
-        // On page load, check which buttons should be highlighted
-        document.addEventListener('DOMContentLoaded', function() {
-            let existingData = JSON.parse(localStorage.getItem('clickedIndexes')) || [];
 
-            for (let i = 1; i <= existingData.length; i++) {
-                const index = existingData[i - 1];
-                const button = document.getElementById(`heartBtnContainer${index}`);
-                button.classList.add('highlighted');
-                button.querySelector('.heart-icon').classList.remove('black');
-                button.querySelector('.heart-icon').classList.add('green');
-            }
-        });
     </script>
 </body>
 </html>

@@ -15,7 +15,6 @@
   <!-- MDB UI KIT -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.10.0/mdb.min.css" />
   <!-- Custom styles -->
-
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cdbootstrap/css/bootstrap.min.css" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cdbootstrap/css/cdb.min.css" />
   <style>
@@ -35,56 +34,15 @@
   <!--Main Navigation-->
   <header class="mb-10">
 
-
-    <!-- Navbar-->
-    <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-2 fixed-top">
-      <div class="
-            container-fluid
-            justify-content-center justify-content-md-between
-          ">
-        <!-- Left elements -->
-        <ul class="navbar-nav flex-row align-items-center">
-          <li class="nav-item me-3 me-lg-1">
-            <a class="nav-link d-flex" href="https://easy-data.mdbgo.io/" target="_blank">
-              <img src="https://easy-data.mdbgo.io/img/logo.png" height="31" alt="" loading="lazy" class="me-2" />
-              <span style="
-                    font-size: 19px;
-                    font-weight: 500;
-                    color: hsl(0, 0%, 30%);
-                  ">Block<span class="text-theme">Week</span></span>
-            </a>
-          </li>
-
-        </ul>
-        <!-- Left elements -->
-
-
-
-        <!-- Right elements -->
-        <ul class="navbar-nav flex-row d-none d-md-flex">
-          <li class="nav-item me-3 me-lg-1">
-            <!-- Example single danger button -->
-
-
-            <input class="form-control me-2" type="search" placeholder="Search" id="searchInput"
-              onkeyup="filterTable()">
-
-          </li>
-
-
-          <li class="nav-item me-3 me-lg-1">
-            <a href="https://mdbootstrap.com/" target="_blank" class="
-                  btn btn-primary btn-rounded
-                  mx-2
-                  d-none d-lg-inline-block
-                ">Summit Event</a>
-          </li>
-
-        </ul>
-        <!-- Right elements -->
+    <nav class="navbar bg-primary bg-body-tertiary" style="position: fixed; top: 0; right: 0; left: 0;">
+      <div class="container-fluid">
+        <a class="navbar-brand text-white fs-3">Lisbon Blockchain Week</a>
+        <form class="d-flex" role="search">
+          <input class="form-control me-2 " type="search" placeholder="Search" id="searchInput"
+          onkeyup="filterTable()">
+        </form>
       </div>
     </nav>
-    <!-- Navbar -->
   </header>
   <!--Main Navigation-->
 
@@ -92,61 +50,64 @@
   <main>
 
     <div class="container" style="margin-top: -30px;">
-      <div class="row ">
-        <div class="col-10">
+      <div class="d-flex justify-content-between ">
+        <div class="">
           <h1>September 2023</h1>
         </div>
-        <div class="col-2">
-          <button class="btm btn-outline-primary"> All =></button>
+        <div class=" d-flex align-items-center">
+          <select  style="background-color: rgb(244, 244, 244) ; border-style: dotted ; border-color: rgb(36, 62, 255); margin-top: 10px;" class=" form-select form-select-lg mb-3 w-auto me-5" aria-label="Large select example">
+            <option selected>All</option>
+            <option value="1">Favorites </option>
+            <option value="2">Conferences</option>
+            <option value="3">Events</option>
+            <option value="4">Drinks</option>
+          </select>
+        
+          <a class="  btn btn-primary btn-rounded d-flex align-items-center " type="submit">Summit Event</a>
         </div>
 
       </div>
-      <!-- Button trigger modal -->
-      <a type="button" data-bs-toggle="modal" data-bs-target="#Modal1">
-        Launch demo modal
-      </a>
-      <a>
-        Launch demo modal
-      </a>
+      
+     
 
 
 
       <div>
-        <div class="">
-          <ul class="nav nav-tabs mb-3 d-flex justify-content-center" id="ex1" role="tablist">
+        <div class=" mt-3">
+          <ul class="nav pt-1 ps-lg-5 pe-lg-5 pb-1  nav-tabs mb-3 d-flex justify-content-between " style="background-color: rgb(234, 234, 234);  " id="ex1" role="tablist">
             <li class="nav-item" role="presentation">
-              <a class="nav-link active" id="ex1-tab-1" data-bs-toggle="tab" href="#ex1-tabs-1" role="tab"
-                aria-controls="ex1-tabs-1" aria-selected="true">MON <br>12</a>
+              <a class="nav-link active fs-6 text-center" id="ex1-tab-1" data-bs-toggle="tab" href="#ex1-tabs-1" role="tab"
+                aria-controls="ex1-tabs-1" aria-selected="true">Mon <br>12</a>
             </li>
             <li class="nav-item" role="presentation">
-              <a class="nav-link" id="ex1-tab-2" data-bs-toggle="tab" href="#ex1-tabs-2" role="tab"
-                aria-controls="ex1-tabs-2" aria-selected="false">MON <br>12</a>
+              <a class="nav-link fs-6 text-center" id="ex1-tab-2" data-bs-toggle="tab" href="#ex1-tabs-2" role="tab"
+                aria-controls="ex1-tabs-2" aria-selected="false">Tue <br>12</a>
             </li>
             <li class="nav-item" role="presentation">
-              <a class="nav-link" id="ex1-tab-3" data-bs-toggle="tab" href="#ex1-tabs-3" role="tab"
-                aria-controls="ex1-tabs-3" aria-selected="false">MON <br>12</a>
+              <a class="nav-link fs-6 text-center" id="ex1-tab-3" data-bs-toggle="tab" href="#ex1-tabs-3" role="tab"
+                aria-controls="ex1-tabs-3" aria-selected="false">Wed <br>12</a>
             </li>
             <li class="nav-item" role="presentation">
-              <a class="nav-link " id="ex1-tab-4" data-bs-toggle="tab" href="#ex1-tabs-4" role="tab"
-                aria-controls="ex1-tabs-4" aria-selected="true">MON <br>12</a>
+              <a class="nav-link fs-6 text-center " id="ex1-tab-4" data-bs-toggle="tab" href="#ex1-tabs-4" role="tab"
+                aria-controls="ex1-tabs-4" aria-selected="true">Thur <br>12</a>
             </li>
             <li class="nav-item" role="presentation">
-              <a class="nav-link" id="ex1-tab-5" data-bs-toggle="tab" href="#ex1-tabs-5" role="tab"
-                aria-controls="ex1-tabs-5" aria-selected="false">MON <br>12</a>
+              <a class="nav-link fs-6 text-center" id="ex1-tab-5" data-bs-toggle="tab" href="#ex1-tabs-5" role="tab"
+                aria-controls="ex1-tabs-5" aria-selected="false">Fri <br>12</a>
             </li>
             <li class="nav-item" role="presentation">
-              <a class="nav-link" id="ex1-tab-6" data-bs-toggle="tab" href="#ex1-tabs-6" role="tab"
-                aria-controls="ex1-tabs-6" aria-selected="false">MON <br>12</a>
+              <a class="nav-link fs-6 text-center" id="ex1-tab-6" data-bs-toggle="tab" href="#ex1-tabs-6" role="tab"
+                aria-controls="ex1-tabs-6" aria-selected="false">Sat <br>12</a>
             </li>
             <li class="nav-item" role="presentation">
-              <a class="nav-link " id="ex1-tab-7" data-bs-toggle="tab" href="#ex1-tabs-7" role="tab"
-                aria-controls="ex1-tabs-7" aria-selected="true">MON <br>12</a>
+              <a class="nav-link fs-6 text-center " id="ex1-tab-7" data-bs-toggle="tab" href="#ex1-tabs-7" role="tab"
+                aria-controls="ex1-tabs-7" aria-selected="true">Sun <br>12</a>
             </li>
 
           </ul>
           <div class="tab-content" id="ex1-content">
             <div class="tab-pane fade show active" id="ex1-tabs-1" role="tabpanel" aria-labelledby="ex1-tab-1">
-              <table class="table" id="DataTable">
+              <table  class="table " id="DataTable">
 
                 <tbody id="table-body1"></tbody>
               </table>
@@ -227,13 +188,14 @@
           tr[i].style.display = match ? "" : "none";
         }
       }
-
+      let AllData;
 
       // for Monday
       function displayResult1(response) {
         let tableHead = "";
         let tableBody = "";
         let FirstRowTime=response.result.values[0];
+       AllData=response.result.values
         console.log(FirstRowTime[0]);
 
         response.result.values.forEach((row, index) => {
@@ -247,7 +209,7 @@
             tableBody += "<tr>";
             let existingData = JSON.parse(localStorage.getItem('clickedIndexesL')) || [];
 
-            if (existingData.includes(index)) {
+            if (existingData.includes(row[0,1])) {
 
               tableBody += `<td>
                     <a style="cursor: pointer;" class="heart-btn" onclick="handleButtonClick(${index})" id="heartBtnContainer${index}">
@@ -290,11 +252,10 @@
             const isoTime = convertTimeToISO(time);
             let dateForModel =response.result.values[0]
 
-            console.log(isoTime);
            
             tableBody += `
                 <td>
-                    <a type="button" data-bs-toggle="modal" data-bs-target="#${modalId}" style='color:black; text-decoration: underline;'>${row[1]}</a>
+                    <a type="button" data-bs-toggle="modal" data-bs-target="#${modalId}" style='color:black; font-size: 17px ;text-decoration: underline;'>${row[1]}</a>
                 </td>
                 <!-- Modal -->
                 <div class="modal fade" id="${modalId}" tabindex="-1" aria-hidden="true">
@@ -324,9 +285,21 @@
                     </div>
                 </div>
             `;
-            tableBody += "<td>" + row[2] + "</td>";
+          
+           const data1=`${row[2]}`
+const categories1 = data1.split(' / ');
 
 
+
+let categoryString = '';
+
+categories1.forEach(category => {
+    categoryString += `
+        <span style='font-size: 13px;' class="ps-3 pe-3 rounded-pill bg-info text-white">${category}</span>
+    `;
+});
+
+tableBody += `<td>${categoryString}</td>`;
             tableBody += "</tr>";
           }
         });
@@ -337,18 +310,22 @@
       }
       // for love btn
       function handleButtonClick(index) {
+        let RowData = AllData[index]
+       
+        console.log(RowData[1]);
+
         // Retrieve existing data from local storage (if any)
         let existingData = JSON.parse(localStorage.getItem('clickedIndexesL')) || [];
 
         // Check if the index is already in the array
-        const indexExists = existingData.indexOf(index) !== -1;
+        const indexExists = existingData.indexOf(RowData[1]) !== -1;
 
         if (indexExists) {
           // Remove the index from the array
-          existingData = existingData.filter(item => item !== index);
+          existingData = existingData.filter(item => item !== RowData[1]);
         } else {
           // Add the index to the array
-          existingData.push(index);
+          existingData.push(RowData[1]);
         }
 
         // Save the updated array back to local storage

@@ -1,31 +1,75 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Time Converter</title>
+    <title>Show Table Data Based on Selection</title>
 </head>
 <body>
-    <script>
-function convertTimeToISO(time) {
-    const [start, end] = time.split(' - ');
-    let originalDate = "2023-10-18";
-let formattedDate = originalDate.replace(/-/g, '');
-console.log(formattedDate); // Output: "20231018"
 
-    const isoStartDate = `${formattedDate}T${start.replace(':', '')}00`;
-    const isoEndDate = `${formattedDate}T${end.replace(':', '')}00`;
+<select id="categorySelect" onchange="filterTableByCategory()" style="background-color: rgb(244, 244, 244) ; border-style: dotted ; border-color: rgb(36, 62, 255); margin-top: 10px;" class="form-select form-select-lg mb-3 w-auto me-5" aria-label="Large select example">
+    <option selected>All</option>
+    <option value="Favorites">Favorites </option>
+    <option value="Conferences">Conferences</option>
+    <option value="Events">Events</option>
+    <option value="Drinks">Drinks</option>
+</select>
 
-    return `${isoStartDate}/${isoEndDate}`;
+<table class="table" id="DataTable">
+    <tbody id="table-body1">
+      
+            <tr >
+                <td>01</td>
+                <td>2023-12-9</td>
+                <td>oranges</td>
+                <td>Events, Drinks</td>
+            </tr>
+            <tr >
+                <td>02</td>
+                <td>2023-12-19</td>
+                <td>Apple</td>
+                <td>Conferences, Drinks</td>
+            </tr>
+            <tr >
+                <td>03</td>
+                <td>2023-10-9</td>
+                <td>Beer</td>
+                <td> Drinks</td>
+            </tr>
+            <tr >
+                <td>01</td>
+                <td>2023-12-9</td>
+                <td>Wine</td>
+                <td>Favorites, Events</td>
+            </tr>
+        
+    </tbody>
+</table>
+
+<script>
+function filterTableByCategory() {
+    var selectedCategory = document.getElementById('categorySelect').value;
+    var rows = document.querySelectorAll('#DataTable tbody tr');
+
+    if (selectedCategory === 'All') {
+        rows.forEach(function(row) {
+            row.style.display = '';
+        });
+    } else {
+        rows.forEach(function(row) {
+            var categories = row.children[3].textContent;
+            if (categories.includes(selectedCategory)) {
+                row.style.display = '';
+            } else {
+                row.style.display = 'none';
+            }
+        });
+    }
 }
+</script>
 
-const time = '12:00 - 14:01';
-const isoTime = convertTimeToISO(time);
-
-console.log(isoTime); // Output: '20231018T120000/20231018T140100'
-
-
-
-    </script>
 </body>
 </html>
+

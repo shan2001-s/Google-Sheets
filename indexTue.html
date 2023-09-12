@@ -77,32 +77,32 @@
         <div class=" mt-3">
           <ul class="nav pt-1 ps-lg-5 pe-lg-5 pb-1  nav-tabs mb-3 d-flex justify-content-between " style="background-color: rgb(234, 234, 234);  " id="ex1" role="tablist">
             <li class="nav-item" role="presentation">
-              <a class="nav-link active  fs-6 text-center"  href="index.html" role="tab"
+              <a class="nav-link  fs-6 text-center"  href="index.html" role="tab"
                 >Mon <br>12</a>
             </li>
             <li class="nav-item" role="presentation">
-              <a class="nav-link  fs-6 text-center"  href="indexTue.html" role="tab"
+                <a class="nav-link active fs-6 text-center"  href="#" role="tab"
                 >Tue <br>12</a>
             </li>
             <li class="nav-item" role="presentation">
-              <a class="nav-link  fs-6 text-center"  href="index.html" role="tab"
-              >Mon <br>12</a>
+                <a class="nav-link  fs-6 text-center"  href="index.html" role="tab"
+                >Wed <br>12</a>
             </li>
             <li class="nav-item" role="presentation">
-              <a class="nav-link  fs-6 text-center"  href="index.html" role="tab"
-              >Mon <br>12</a>
+                <a class="nav-link  fs-6 text-center"  href="index.html" role="tab"
+                >Thur <br>12</a>
             </li>
             <li class="nav-item" role="presentation">
-              <a class="nav-link  fs-6 text-center"  href="index.html" role="tab"
-                >Mon <br>12</a>
+                <a class="nav-link  fs-6 text-center"  href="index.html" role="tab"
+                >Fri <br>12</a>
             </li>
             <li class="nav-item" role="presentation">
-              <a class="nav-link  fs-6 text-center"  href="index.html" role="tab"
-                >Mon <br>12</a>
+                <a class="nav-link  fs-6 text-center"  href="index.html" role="tab"
+                >Sat <br>12</a>
             </li>
             <li class="nav-item" role="presentation">
-              <a class="nav-link  fs-6 text-center"  href="index.html" role="tab"
-              >Mon <br>12</a>
+                <a class="nav-link  fs-6 text-center"  href="index.html" role="tab"
+                >Sun <br>12</a>
             </li>
 
           </ul>
@@ -416,14 +416,112 @@ tableBody += `<td>${categoryString}</td>`;
         }
 
       }
+
+
+      function displayResult2(response) {
+        let tableHead = "";
+        let tableBody = "";
+
+        response.result.values.forEach((row, index) => {
+          if (index === 1 || index === 0) {
+            tableHead += "<tr>";
+            row.forEach((val) => (tableHead += "<th>" + val + "</th>"));
+            tableHead += "</tr>";
+          } else  {
+            tableBody += "<tr>";
+            let existingData = JSON.parse(localStorage.getItem('clickedIndexesL')) || [];
+
+            if (existingData.includes(row[0,1])) {
+
+              tableBody += `<td>
+                    <a style="cursor: pointer;" class="heart-btn" onclick="handleButtonClick(${index})" id="heartBtnContainer${index}">
+                        <svg class="heart-icon green" xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512">
+                            <path d="M47.6 300.4L228.3 469.1c7.5 7 17.4 10.9 27.7 10.9s20.2-3.9 27.7-10.9L464.4 300.4c30.4-28.3 47.6-68 47.6-109.5v-5.8c0-69.9-50.5-129.5-119.4-141C347 36.5 300.6 51.4 268 84L256 96 244 84c-32.6-32.6-79-47.5-124.6-39.9C50.5 55.6 0 115.2 0 185.1v5.8c0 41.5 17.2 81.2 47.6 109.5z"/>
+                        </svg>
+                    </a>
+                </td>`
+            } else {
+              tableBody += `<td>
+                    <a style="cursor: pointer;" class="heart-btn" onclick="handleButtonClick(${index})" id="heartBtnContainer${index}">
+                        <svg class="heart-icon" xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512">
+                            <path d="M47.6 300.4L228.3 469.1c7.5 7 17.4 10.9 27.7 10.9s20.2-3.9 27.7-10.9L464.4 300.4c30.4-28.3 47.6-68 47.6-109.5v-5.8c0-69.9-50.5-129.5-119.4-141C347 36.5 300.6 51.4 268 84L256 96 244 84c-32.6-32.6-79-47.5-124.6-39.9C50.5 55.6 0 115.2 0 185.1v5.8c0 41.5 17.2 81.2 47.6 109.5z"/>
+                        </svg>
+                    </a>
+                </td>`
+            }
+
+            // Display data from column A , B and C
+            tableBody += "<td>" + row[0] + "</td>";
+
+
+            // Add the code for modals here
+            const modalId = `T${row[1].replace(/\s+/g, '&nbsp;')}`;
+           
+           
+            tableBody += `
+                <td>
+                    <a type="button" data-bs-toggle="modal" data-bs-target="#${modalId}" style='color:black; font-size: 15px ;text-decoration: underline;'>${row[1]}</a>
+                </td>
+                <!-- Modal -->
+                <div class="modal fade" id="${modalId}" tabindex="-1" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                              <h1 class="modal-title fs-5" >${row[0]} </h1> 
+                               
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                              <h5 >${row[1]}</h5>
+                              <br>
+                                <h5>Description</h5>
+                               <p>${row[3]}</p>
+                               <h5> Speaker </h5>
+                               <p class="mb-2"> ${row[4]}<p> 
+                                <div class='p-2 '>   <a  href="${row[6]}" target="_blank"> ${row[5]}<a></div>
+                                  <div class='p-2 '>   <a  href="https://calendar.google.com/calendar/u/0/r/eventedit?text=${row[1]}&location=${row[5]}&dates=" target="_blank"> Add Event To Google Calendar<a></div>
+                                  <div class='p-2'>   <a  href="${row[7]}" target="_blank">Event Url<a></div>
+
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+          
+           const data1=`${row[2]}`
+const categories1 = data1.split(' / ');
+
+
+
+let categoryString = '';
+
+categories1.forEach(category => {
+    categoryString += `
+        <span style='font-size: 13px;' class="ps-3 pe-3 rounded-pill bg-info text-white">${category}</span>
+    `;
+});
+
+tableBody += `<td>${categoryString}</td>`;
+            tableBody += "</tr>";
+          }
+        });
+
+
+        document.getElementById("table-body2").innerHTML = tableBody;
+        filterTable();
+      }
+
+
       function loadData() {
         // Spreadsheet ID
         const spreadsheetId = "1SX-0rNXZ-yp_4wtoHp_eFuDklyCXDqwi1ca0YtV9E9U";
-        const sheet1Range = "Monday!A:Z";
-      
+        const sheet1Range = "Tueday!A:Z";
 
         getPublicValues({ spreadsheetId, range: sheet1Range }, displayResult1);
-    
+      
 
       }
 
